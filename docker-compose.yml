@@ -1,0 +1,30 @@
+# Local/staging stack: Postgres + Redis + Django API.
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: xpressdrive
+      POSTGRES_USER: xpressdrive
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-xpressdrive-dev-password}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U xpressdrive"]
+      interval: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+
+  api:
+    build: ./backend
+    env_file: ./backend/.env
+    environment:
+      POSTGRES_HOST: db
+      REDIS_URL: redis://redis:6379/0
+    ports: ["8000:8000"]
+    depends_on:
+      db: { condition: service_healthy }
+      redis: { condition: service_started }
+
+volumes:
+  pgdata:
