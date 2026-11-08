@@ -11,7 +11,8 @@ export default defineConfig(({ mode }) => {
     plugins: [vue()],
     resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
     server: {
-      port: 5173,
+      port: 5175,
+      strictPort: true,
       proxy: { '/api': { target: apiTarget, changeOrigin: false } },
     },
     build: { sourcemap: false },

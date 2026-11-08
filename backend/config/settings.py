@@ -268,7 +268,7 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", "")
 EMAIL_USE_TLS = env_bool("EMAIL_USE_TLS", True)
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", "XpressDrive <no-reply@xpressdrive.co.ug>")
 
-FRONTEND_URL = env("FRONTEND_URL", "http://localhost:5173").rstrip("/")
+FRONTEND_URL = env("FRONTEND_URL", "http://localhost:5175").rstrip("/")
 
 # --------------------------------------------------------------------------
 # Business configuration

@@ -43,7 +43,7 @@ Or with Docker: `docker compose up --build` (Postgres + Redis + API).
 
 ### Web
 ```bash
-cd web && npm install && npm run dev    # http://localhost:5173 (proxies /api → :4444)
+cd web && npm install && npm run dev    # http://localhost:5175 (proxies /api → :4444)
 npm run build                            # production bundle in web/dist
 ```
 
